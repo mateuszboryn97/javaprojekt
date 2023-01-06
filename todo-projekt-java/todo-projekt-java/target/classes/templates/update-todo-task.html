@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>ToDo App</title>
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/3.4.1/css/bootstrap.min.css} " />
+</head>
+<body>
+    <div class = "container">
+        <div class = "col-md-6">
+            <form action="#" th:action="@{/todo/{id}(id=${todo.id})}" th:object="${todo}" method="POST">
+                <div class = "form-group">
+                    <label for = "taskDescription">Edytuj zadanie</label>
+                    <input class = "form-control" type = "text" th:field = "*{taskDescription}" id = "taskDescription" placeholder = "podaj opis zadania">
+                    <span th:if = "${#fields.hasErrors('taskDescription')}" th:errors = "*{taskDescription}"></span>
+                </div>
+                <div class = "checkbox">
+                    <label>
+                        <input type = "checkbox" th:checked = "${complete} == true" th:field = "*{complete}" id = "complete">
+                        Ukończono
+                    </label>
+                    <label>
+                        <input type = "checkbox" th:checked = "${priority} == true" th:field = "*{priority}" id = "priority">
+                        Priorytetowe
+                    </label>
+                </div>
+
+                <button class = "btn btn-success" type = "submit">Edytuj</button>
+
+                <input type = "hidden" th:field = "*{createdTaskDate}" />
+                <input type = "hidden" th:field = "*{finishTaskDate}" />
+            </form>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang=pl xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>ToDo App</title>
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/3.4.1/css/bootstrap.min.css} " />
+</head>
+<body>
+    <div class="container">
+        <h1 class = "text-center">Lista zadań</h1>
+        <hr />
+
+        <p><a class = "btn btn-success" href="/create-todo">Dodaj Zadanie! *z formularza</a></p>
+
+        <table class = "table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Opis Zadania</th>
+                    <th>Ukonczono</th>
+                    <th>Priorytetowe</th>
+                    <th>Data Utworzenia</th>
+                    <th>Data Ukonczenia</th>
+                    <th>Akcja</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="item : ${todoTasks}" th:class="${item.complete} ? success : warning">
+                    <td th:text = "${item.id}">item_id</td>
+                    <td th:text = "${item.taskDescription}">item_taskDescription</td>
+                    <td th:text = "${item.complete}">item_complete</td>
+                    <td th:text = "${item.priority}" >item_priority</td>
+                    <td th:text = "${item.createdTaskDate}">item_created_task_date</td>
+                    <td th:text = "${item.finishTaskDate}">item_finish_task_date</td>
+                    <td>
+                        <div class="btn btn-group-sm" role="group">
+                            <a class="btn btn-primary" th:href="@{/priority/{id}(id=${item.id})}">Ważne</a>
+                            <a class="btn btn-success" th:href="@{/finish/{id}(id=${item.id})}">Ukończ</a>
+                            <a class="btn btn-info" th:href="@{/edit/{id}(id=${item.id})}">Edytuj</a>
+                            <a class="btn btn-danger" th:href="@{/delete/{id}(id=${item.id})}">Usuń</a>
+
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script th:src="@{/webjars/jquery/3.6.0/jquery.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/3.4.1/js/bootstrap.min.js}"></script>
+</body>
+</html>
