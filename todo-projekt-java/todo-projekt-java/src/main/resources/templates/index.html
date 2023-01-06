@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/3.4.1/css/bootstrap.min.css} " />
+    <link th:rel="stylesheet" th:href="@{css/app.css} " />
 </head>
 <body>
     <div class="container">
@@ -15,16 +16,16 @@
 
         <p><a class = "btn btn-success" href="/create-todo">Dodaj Zadanie! *z formularza</a></p>
 
-        <table class = "table table-bordered table-striped">
+        <table class = "table table-bordered table-striped sorting-table">
             <thead>
                 <tr>
-                    <th>ID</th>
-                    <th>Opis Zadania</th>
-                    <th>Ukonczono</th>
-                    <th>Priorytetowe</th>
-                    <th>Data Utworzenia</th>
-                    <th>Data Ukonczenia</th>
-                    <th>Akcja</th>
+                    <th class="cursor-pointer sortable">ID</th>
+                    <th class="cursor-pointer sortable">Opis Zadania</th>
+                    <th class="cursor-pointer sortable">Ukonczono</th>
+                    <th class="cursor-pointer sortable">Priorytetowe</th>
+                    <th class="cursor-pointer sortable">Data Utworzenia</th>
+                    <th class="cursor-pointer sortable">Data Ukonczenia</th>
+                    <th class="cursor-pointer">Akcja</th>
                 </tr>
             </thead>
             <tbody>
@@ -51,5 +52,6 @@
 
     <script th:src="@{/webjars/jquery/3.6.0/jquery.min.js}"></script>
     <script th:src="@{/webjars/bootstrap/3.4.1/js/bootstrap.min.js}"></script>
+    <script th:src="@{js/app.js}"></script>
 </body>
 </html>

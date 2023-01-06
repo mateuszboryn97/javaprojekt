@@ -1,0 +1,7 @@
+.cursor-pointer {
+    cursor: pointer
+}
+
+.sortable {
+    text-decoration: underline;
+}
