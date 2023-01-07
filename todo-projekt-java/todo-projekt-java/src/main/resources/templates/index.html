@@ -34,8 +34,8 @@
                     <td th:text = "${item.taskDescription}">item_taskDescription</td>
                     <td th:text = "${item.complete}">item_complete</td>
                     <td th:text = "${item.priority}" >item_priority</td>
-                    <td th:text = "${item.createdTaskDate}">item_created_task_date</td>
-                    <td th:text = "${item.finishTaskDate}">item_finish_task_date</td>
+                    <td th:text = "${#dates.format(item.createdTaskDate, 'dd-MM-yyyy')}">item_created_task_date</td>
+                    <td th:text = "${#dates.format(item.finishTaskDate, 'dd-MM-yyyy')}">item_finish_task_date</td>
                     <td>
                         <div class="btn btn-group-sm" role="group">
                             <a class="btn btn-primary" th:href="@{/priority/{id}(id=${item.id})}">Ważne</a>
